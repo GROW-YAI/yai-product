@@ -26,26 +26,35 @@ export default function Navbar() {
 
   return (
     <>
-      <AppBar position="static" sx={{ bgcolor: 'white', color: 'black', boxShadow: 0 }}>
+      <AppBar
+        position="absolute"
+        sx={{
+            top: 20,
+            left: "50%",
+            transform: "translateX(-50%)",
+            width: "90%",
+            bgcolor:"rgba(192, 139, 128, 0.2)", 
+            backdropFilter: "blur(12px)",
+            borderRadius: "30px",
+            padding: "8px 20px",
+        }}
+      >
         <Toolbar sx={{ justifyContent: 'space-between' }}>
-       
           <Box display="flex" alignItems="center">
             <img src="/logo.png" alt="Logo" width={40} height={40} />
           </Box>
 
-    
           <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 2 }}>
             {navItems.map((item, index) => (
               <Box key={index} sx={{ display: 'flex', alignItems: 'center' }}>
-                {index !== 0 && <Typography sx={{ mx: 1 }}>|</Typography>}
+                {index !== 0 && <Typography sx={{ mx: 1 }}></Typography>}
                 <Link href={`/${item.toLowerCase()}`} passHref>
                   <Typography
-                    component="a"
                     sx={{
                       textDecoration: 'none',
-                      color: 'inherit',
+                      color: "#C08B80", 
                       fontWeight: 'bold',
-                      '&:hover': { color: 'blue' },
+                      '&:hover': { color: "#8B5E58" },
                     }}
                   >
                     {item}
@@ -55,7 +64,6 @@ export default function Navbar() {
             ))}
           </Box>
 
-       
           <IconButton
             edge="end"
             color="inherit"
@@ -68,11 +76,10 @@ export default function Navbar() {
         </Toolbar>
       </AppBar>
 
-  
       <Drawer anchor="right" open={mobileOpen} onClose={handleDrawerToggle}>
         <List sx={{ width: 200 }}>
           {navItems.map((item, index) => (
-            <ListItem component="a" key={index} onClick={handleDrawerToggle}>
+            <ListItem component="h1" key={index} onClick={handleDrawerToggle}>
               <Link href={`/${item.toLowerCase()}`} passHref>
                 <ListItemText primary={item} sx={{ textAlign: 'center' }} />
               </Link>
@@ -83,3 +90,5 @@ export default function Navbar() {
     </>
   );
 }
+
+
