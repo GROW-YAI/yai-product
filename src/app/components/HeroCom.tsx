@@ -6,12 +6,6 @@ interface HeroSectionProps {
   subtitle: string;
   backgroundImage: string;
 }
-const Hero= {
-    title: "styleSphere",
-    subtitle:"Elevate your style, define your sphere",
-    backgroundImage:"../../public/heropic.png"
-}
-
 const HeroSection = ({ title, subtitle, backgroundImage }: HeroSectionProps) => {
   return (
     <Box

@@ -14,6 +14,7 @@ import {
   ListItemText,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import Image from 'next/image';
 
 const navItems = ['Home', 'About', 'Company', 'Services', 'Contact'];
 
@@ -41,7 +42,7 @@ export default function Navbar() {
       >
         <Toolbar sx={{ justifyContent: 'space-between' }}>
           <Box display="flex" alignItems="center">
-            <img src="/logo.png" alt="Logo" width={40} height={40} />
+            <Image src="/logo.png" alt="Logo" width={40} height={40} />
           </Box>
 
           <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 2 }}>
