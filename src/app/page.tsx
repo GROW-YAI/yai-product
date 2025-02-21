@@ -1,5 +1,5 @@
 // import Image from "next/image";
-import { Box, Container } from "@mui/material"; 
+import { Box} from "@mui/material"; 
 import Navbar from "./components/NavBar";
 import HeroSection from "./components/HeroCom";
 import AboutInfo from "./components/AboutInfo";
