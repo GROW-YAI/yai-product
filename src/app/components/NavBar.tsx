@@ -58,7 +58,8 @@ export default function Navbar() {
               <Link key={index} href={`/${item.toLowerCase()}`} style={{ textDecoration: "none" }}>
                 <Typography
                   sx={{
-                    color: "#C08B80",
+                    // color: "#C08B80",
+                    color: "#fff",
                     fontWeight: "bold",
                     transition: "color 0.3s ease",
                     "&:hover": { color: "#8B5E58" },

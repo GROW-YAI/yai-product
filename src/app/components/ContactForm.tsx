@@ -1,7 +1,9 @@
 'use client';
-import { Stack, TextField, Button, Typography, Box } from '@mui/material';
+import { Stack, TextField, Button, Typography, Box, useMediaQuery, useTheme } from '@mui/material';
 
 const ContactForm = () => {
+    const theme = useTheme();
+    const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm')); 
 
     return (
         <Box
@@ -22,15 +24,16 @@ const ContactForm = () => {
                     backgroundColor: '#F5F1EB',
                     borderRadius: 2,
                     overflow: 'hidden',
-                    boxShadow: 3
+                    boxShadow: 3,
+                    flexDirection: { xs: 'column', sm: 'row' } 
                 }}
             >
-            
+
                 <Box
                     sx={{
                         flex: 1,
                         position: 'relative',
-                        display: 'flex',
+                        display: isSmallScreen ? 'none' : 'flex', 
                         justifyContent: 'center',
                         alignItems: 'center',
                         backgroundColor: '#1A3C34',
@@ -50,6 +53,7 @@ const ContactForm = () => {
                     />
                 </Box>
 
+           
                 <Stack
                     component="form"
                     spacing={2}
@@ -58,9 +62,7 @@ const ContactForm = () => {
                         padding: 4,
                         textAlign: 'left'
                     }}
-                   
                 >
-                
                     <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#3C5652' }}>
                         Visit Our Store
                     </Typography>
