@@ -49,20 +49,26 @@ const HeroSection = ({ title, subtitle, backgroundImage }: HeroSectionProps) => 
           {subtitle}
         </Typography>
         <Link href="/#" passHref>
-     <Button
-    variant="contained"
-    sx={{
-      marginTop: 3,
-      backgroundColor: "#C08B80", 
-      color: "white",
-      borderRadius: "20px",
-      "&:hover": {
-        backgroundColor: "#a06d64",
-      },
-    }}
-  >
-    Get Started
-  </Button>
+        <Button
+  variant="contained"
+  sx={{
+    marginTop: 3,
+    backgroundColor: "#C08B80",
+    color: "white",
+    borderRadius: "20px",
+    padding: "10px 20px", 
+    fontWeight: "bold",
+    boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.4)", 
+    transition: "all 0.3s ease-in-out", 
+    "&:hover": {
+      backgroundColor: "#8b5e56", 
+      boxShadow: "0px 6px 8px rgba(0, 0, 0, 0.3)", 
+    },
+  }}
+>
+  Get Started
+</Button>
+
 </Link>
       </Container>
     </Box>
