@@ -8,7 +8,7 @@ interface HeroSectionProps {
 }
 const HeroSection = ({ title, subtitle, backgroundImage }: HeroSectionProps) => {
   return (
-    <Box
+    <Box id='home-section'
       sx={{
         position: "relative",
         height: "100vh",

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import {
   AppBar,
   Toolbar,
@@ -16,13 +15,33 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import Image from "next/image";
 
-const navItems = ["Home", "About", "Company", "Services", "Contact"];
+const navItems = [
+  { label: "Home", id: "home-section" },
+  { label: "About", id: "about-clients-section" },
+  { label: "Company", id: "about-products-section" },
+  { label: "Services", id: "product-section" },
+  { label: "Contact", id: "contact-section" },
+];
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
+  };
+ 
+  const handleScroll = (e: React.MouseEvent, sectionId: string) => {
+    e.preventDefault();
+  
+    const section = document.getElementById(sectionId);
+    if (section) {
+      const offsetTop = section.offsetTop;
+      window.scrollTo({
+        top: offsetTop,
+        behavior: "smooth",
+      });
+    }
+    setMobileOpen(false);
   };
 
   return (
@@ -55,51 +74,35 @@ export default function Navbar() {
         
           <Box sx={{ display: { xs: "none", md: "flex" }, gap: 3 }}>
             {navItems.map((item, index) => (
-              <Link key={index} href={`/${item.toLowerCase()}`} style={{ textDecoration: "none" }}>
-                <Typography
-                  sx={{
-                    // color: "#C08B80",
-                    color: "#fff",
-                    fontWeight: "bold",
-                    transition: "color 0.3s ease",
-                    "&:hover": { color: "#8B5E58" },
-                  }}
-                >
-                  {item}
-                </Typography>
-              </Link>
+              <Typography
+                key={index}
+                sx={{
+                  color: "#fff",
+                  fontWeight: "bold",
+                  transition: "color 0.3s ease",
+                  "&:hover": { color: "#8B5E58" },
+                  cursor: "pointer",
+                }}
+                onClick={(e) => handleScroll(e, item.id)}
+              >
+                {item.label}
+              </Typography>
             ))}
           </Box>
 
        
-          <IconButton
-            edge="end"
-            color="inherit"
-            aria-label="menu"
-            onClick={handleDrawerToggle}
-            sx={{ display: { md: "none" } }}
-          >
+          <IconButton edge="end" color="inherit" aria-label="menu" onClick={handleDrawerToggle} sx={{ display: { md: "none" } }}>
             <MenuIcon />
           </IconButton>
         </Toolbar>
       </AppBar>
 
-    
+     
       <Drawer anchor="right" open={mobileOpen} onClose={handleDrawerToggle}>
         <List sx={{ width: 200 }}>
           {navItems.map((item, index) => (
-            <ListItem key={index} onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-              <Link href={`/${item.toLowerCase()}`} style={{ textDecoration: "none", width: "100%" }}>
-                <ListItemText
-                  primary={item}
-                  sx={{
-                    color: "#C08B80",
-                    fontWeight: "bold",
-                    cursor: "pointer",
-                    textAlign: "center",
-                  }}
-                />
-              </Link>
+            <ListItem key={index} onClick={(e) => handleScroll(e, item.id)} sx={{ textAlign: "center", cursor: "pointer" }}>
+              <ListItemText primary={item.label} sx={{ color: "#C08B80", fontWeight: "bold", textAlign: "center" }} />
             </ListItem>
           ))}
         </List>

@@ -13,7 +13,7 @@ interface AboutInfoProps {
 
 const AboutInfo = ({ imageSrc, title, description, reverse, bgColor }: AboutInfoProps) => {
   return (
-    <Box sx={{ width: "100%", py: 10, overflow: "hidden", position: "relative" }}>
+    <Box id='#about-section' sx={{ width: "100%", py: 10, overflow: "hidden", position: "relative" }}>
  
       <Box
         sx={{

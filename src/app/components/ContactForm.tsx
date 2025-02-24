@@ -6,7 +6,7 @@ const ContactForm = () => {
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm')); 
 
     return (
-        <Box
+        <Box id="contact-section"
             sx={{
                 display: 'flex',
                 justifyContent: 'center',
