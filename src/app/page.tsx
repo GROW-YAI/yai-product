@@ -14,7 +14,7 @@ const images = [
   { img: '/Kante1.png', title: 'Kente Cloth', description: 'Authentic Kente fabric'}, 
   { img: '/heropic2.png', title: 'Fashion Hero', description: 'Stand out with bold fashion' },
   { img: '/suit.png', title: 'Suit Collection', description: 'Classic suits for men'}, 
-  { img: '/bag.png', title: 'Suit Collection', description: 'Fashion bag for all occasions '}
+  { img: '/bag.png', title: 'Bag Collection', description: 'Fashion bag for all occasions '}
 ];
 
 
