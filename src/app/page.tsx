@@ -34,10 +34,10 @@ export default function Home() {
       </Box>
     <Box id="about-clients-section">
     <AboutInfo
-      title="About Our Clients"
+      title="About Inovator"
       description="Margaret’s Personalized Virtual Fashion Boutique is a revolutionary online platform that makes customized fashion accessible and eco-friendly. Clients can design their outfits using an intuitive virtual interface, ensuring their unique style and preferences are met. The boutique incorporates a 3D body measurement app to provide precise sizing, eliminating common fit issues. Customers can choose from a range of eco-friendly fabrics, supporting sustainable fashion."
       bgColor="#f6ece8"
-      imageSrc="/heropic.png"
+      imageSrc="/inovator.png"
       reverse={false} 
       // bgColor="rgba(144, 104, 96, 0.2)" 
     />
@@ -47,7 +47,7 @@ export default function Home() {
       title="About Our Products"
       description="StyleSphere offers affordable and flexible pricing packages, ensuring inclusivity for different budgets. Clients also enjoy convenient home and office delivery, along with mobile styling consultations, making the entire fashion experience seamless, from design to doorstep."
       // bgColor="#f6ece8"
-      imageSrc="/heropic.png"
+      imageSrc="/product.png"
       reverse={true} 
       bgColor="rgba(144, 104, 96, 0.2)" 
     />

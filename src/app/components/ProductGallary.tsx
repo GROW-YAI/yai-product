@@ -90,7 +90,7 @@ const ProductGallery = ({ images }: ProductGalleryProps) => {
               position="top"
               actionIcon={
                 <IconButton onClick={() => handleExpandClick(index)}>
-                  <ExpandMoreIcon />
+                  <ExpandMoreIcon style={{ color: "#ffff" }} />
                 </IconButton>
               }
             />

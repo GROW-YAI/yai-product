@@ -25,7 +25,14 @@ export default function Footer() {
     Quick Links
   </Typography>
 
-  <Link href="/" color="inherit" underline="hover" display="block">
+  <Link href="#home-section" 
+   color="inherit"
+   underline="hover"
+   display="block"
+   onClick={(e) => {
+     e.preventDefault();
+     document.getElementById("home-section")?.scrollIntoView({ behavior: "smooth" });
+   }}>
     Home
   </Link>
 
@@ -80,6 +87,18 @@ export default function Footer() {
     }}
   >
     Contact
+  </Link>
+  <Link
+    href="#testimonial-section"
+    color="inherit"
+    underline="hover"
+    display="block"
+    onClick={(e) => {
+      e.preventDefault();
+      document.getElementById("testimonial-section")?.scrollIntoView({ behavior: "smooth" });
+    }}
+  >
+    Testimonials
   </Link>
 </Grid>
 

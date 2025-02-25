@@ -67,10 +67,10 @@ const ContactForm = () => {
                         Visit Our Store
                     </Typography>
                     <Typography variant="body2" sx={{ color: '#3C5652' }}>
-                        500 Terry Francine Street <br /> San Francisco, CA 94158
+                    Oxford Street in Osu, Accra, Ghana
                     </Typography>
                     <Typography variant="body2" sx={{ color: '#3C5652', mt: 1 }}>
-                        <strong>Mail:</strong> info@mysite.com <br />
+                        <strong>Mail:</strong> stylesphere@mysite.com <br />
                         <strong>Tel:</strong> 123-456-7890
                     </Typography>
 
