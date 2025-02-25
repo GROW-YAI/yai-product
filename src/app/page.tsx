@@ -23,9 +23,10 @@ export default function Home() {
     <>
     <Box sx={{ position: "relative", height: "100vh", overflow: "hidden" }}>
 
-    <Box sx={{ position: "absolute", width: "100%", zIndex: 10,marginTop:2 }}>
-      <Navbar />
-    </Box>
+    <Box sx={{ position: "fixed", top: 0, width: "100%", zIndex: 10, backgroundColor: "white", boxShadow: 2 }}>
+  <Navbar />
+</Box>
+
     <HeroSection
       title="StyleSphere"
       subtitle="Elevate Your Style, Define Your Sphere"

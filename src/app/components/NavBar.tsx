@@ -98,7 +98,18 @@ export default function Navbar() {
       </AppBar>
 
      
-      <Drawer anchor="right" open={mobileOpen} onClose={handleDrawerToggle}>
+      <Drawer
+  anchor="right"
+  open={mobileOpen}
+  onClose={handleDrawerToggle}
+  PaperProps={{
+    sx: {
+      bgcolor: "rgba(192, 139, 128, 0.3)", 
+      backdropFilter: "blur(10px)", 
+      color: "#ffff", 
+    },
+  }}
+>
         <List sx={{ width: 200 }}>
           {navItems.map((item, index) => (
             <ListItem key={index} onClick={(e) => handleScroll(e, item.id)} sx={{ textAlign: "center", cursor: "pointer" }}>
