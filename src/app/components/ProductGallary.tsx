@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
-import { ImageList, ImageListItem, ImageListItemBar, IconButton, Collapse, Box, Typography } from "@mui/material";
+import { ImageList, ImageListItem, ImageListItemBar, IconButton, Collapse, Box, Typography, useMediaQuery } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { motion } from "framer-motion";
 
@@ -23,6 +23,12 @@ const ProductGallery = ({ images }: ProductGalleryProps) => {
   const [visibleIndexes, setVisibleIndexes] = useState<number[]>([]);
   const sectionRef = useRef<HTMLDivElement | null>(null);
 
+
+  const isSmallScreen = useMediaQuery("(max-width:600px)");
+  const isMediumScreen = useMediaQuery("(max-width:960px)");
+
+  const cols = isSmallScreen ? 1 : isMediumScreen ? 2 : 3;
+
   const handleExpandClick = (index: number) => {
     setExpanded((prev) => ({ ...prev, [index]: !prev[index] }));
   };
@@ -32,42 +38,35 @@ const ProductGallery = ({ images }: ProductGalleryProps) => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const imgIndex = entry.target.getAttribute("data-index"); 
+            const imgIndex = entry.target.getAttribute("data-index");
             if (imgIndex !== null) {
-              setVisibleIndexes((prev) => [...new Set([...prev, Number(imgIndex)])]); 
+              setVisibleIndexes((prev) => [...new Set([...prev, Number(imgIndex)])]);
             }
           }
         });
       },
       { threshold: 0.3 }
     );
-  
+
     if (sectionRef.current) {
       sectionRef.current.querySelectorAll(".image-item").forEach((el) => observer.observe(el));
     }
-  
+
     return () => observer.disconnect();
   }, []);
-  
 
   return (
     <Box ref={sectionRef} id="product-section" sx={{ width: "100%", overflow: "hidden", py: 4 }}>
-  
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-      >
+      <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut" }}>
         <Typography variant="h4" align="center" fontWeight="bold" gutterBottom>
           Product Showcase
         </Typography>
       </motion.div>
 
-    
-      <ImageList variant="woven" cols={3} gap={8} sx={{ width: "100%", overflow: "hidden" }}>
+     
+      <ImageList variant="woven" cols={cols} gap={8} sx={{ width: "100%", overflow: "hidden" }}>
         {images.map((image, index) => (
           <ImageListItem key={image.img} cols={image.cols || 1} rows={image.rows || 1} className="image-item" data-index={index}>
-       
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               animate={visibleIndexes.includes(index) ? { opacity: 1, y: 0 } : {}}
@@ -84,7 +83,6 @@ const ProductGallery = ({ images }: ProductGalleryProps) => {
               />
             </motion.div>
 
-          
             <ImageListItemBar
               title={image.title}
               position="top"
@@ -95,13 +93,8 @@ const ProductGallery = ({ images }: ProductGalleryProps) => {
               }
             />
 
-           
             <Collapse in={expanded[index]} timeout="auto" unmountOnExit>
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: expanded[index] ? 1 : 0, y: expanded[index] ? 0 : 10 }}
-                transition={{ duration: 0.5 }}
-              >
+              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: expanded[index] ? 1 : 0, y: expanded[index] ? 0 : 10 }} transition={{ duration: 0.5 }}>
                 <Box sx={{ p: 1, bgcolor: "#f8f8f8", borderRadius: "5px" }}>
                   <Typography variant="body2">{image.description}</Typography>
                 </Box>
