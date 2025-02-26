@@ -48,7 +48,7 @@ const HeroSection = ({ title, subtitle, backgroundImage }: HeroSectionProps) => 
         <Typography variant="h5" fontWeight={300}>
           {subtitle}
         </Typography>
-        <Link href="/#" passHref>
+        <Link href="/#product-section" passHref>
         <Button
   variant="contained"
   sx={{
