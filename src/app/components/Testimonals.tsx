@@ -8,10 +8,10 @@ import { Box, Card, CardContent, Typography, Avatar, IconButton } from "@mui/mat
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
 
 const testimonials = [
-  { name: "Sarah A.", text: "StyleSphere helped me discover a new level of personal styling. The designs are unique and the virtual consultations were amazing!" },
+  { name: "Sarah A.", text: "Styles By MakG helped me discover a new level of personal styling. The designs are unique and the virtual consultations were amazing!" },
   { name: "Kwame B.", text: "Fantastic experience! The fitting was perfect, and the eco-friendly fabrics make it even more worth it." },
   { name: "Ama O.", text: "Affordable and stylish! I love how flexible the pricing is. I’ll definitely shop here again." },
-  { name: "Kofi D.", text: "StyleSphere’s customer service is top-notch! They really listen to your preferences and deliver exactly what you need." },
+  { name: "Kofi D.", text: "Styles By MakG’s customer service is top-notch! They really listen to your preferences and deliver exactly what you need." },
   { name: "Akosua M.", text: "The quality of the outfits exceeded my expectations. It feels premium yet so comfortable. Highly recommend!" },
   { name: "Jason T.", text: "I’ve never felt more confident in my outfits. The styling suggestions were spot on, and the delivery was super fast!" },
   {name:"Nana A.", text:"I love the variety of products available. I can always find something that suits my style and budget."},

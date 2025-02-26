@@ -53,8 +53,8 @@ export default function Navbar() {
           left: "50%",
           transform: "translateX(-50%)",
           width: "90%",
-          bgcolor: "rgba(192, 139, 128, 0.5)", // Increased opacity for better contrast
-          backdropFilter: "blur(12px)",
+          bgcolor: "rgba(192, 139, 128, 0.7)", // Adjusted opacity for better contrast
+          backdropFilter: "blur(14px)", // Slightly increased blur effect
           borderRadius: "30px",
           padding: "8px 20px",
         }}
@@ -63,15 +63,13 @@ export default function Navbar() {
 
           <Box display="flex" alignItems="center">
             <Image
-              src="/Error.png"
-              alt="Logo"
-              width={40}
-              height={40}
-              // onError={(e) => console.log("Logo failed to load")}
+              src="/logo.png"
+              alt="Styles by MakG logo" 
+              width={60}
+              height={50}
             />
           </Box>
 
-        
           <Box sx={{ display: { xs: "none", md: "flex" }, gap: 3 }}>
             {navItems.map((item, index) => (
               <Typography
@@ -90,26 +88,24 @@ export default function Navbar() {
             ))}
           </Box>
 
-       
           <IconButton edge="end" color="inherit" aria-label="menu" onClick={handleDrawerToggle} sx={{ display: { md: "none" } }}>
             <MenuIcon />
           </IconButton>
         </Toolbar>
       </AppBar>
 
-     
       <Drawer
-  anchor="right"
-  open={mobileOpen}
-  onClose={handleDrawerToggle}
-  PaperProps={{
-    sx: {
-      bgcolor: "rgba(192, 139, 128, 0.3)", 
-      backdropFilter: "blur(10px)", 
-      color: "#ffff", 
-    },
-  }}
->
+        anchor="right"
+        open={mobileOpen}
+        onClose={handleDrawerToggle}
+        PaperProps={{
+          sx: {
+            bgcolor: "rgba(192, 139, 128, 0.5)", 
+            backdropFilter: "blur(12px)", 
+            color: "#fff", 
+          },
+        }}
+      >
         <List sx={{ width: 200 }}>
           {navItems.map((item, index) => (
             <ListItem key={index} onClick={(e) => handleScroll(e, item.id)} sx={{ textAlign: "center", cursor: "pointer" }}>

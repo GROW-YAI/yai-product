@@ -4,12 +4,12 @@
   import "./globals.css";
 
   export const metadata = {
-    title: "StyleSphere",
+    title: "Styles By MakG",
   
     icons: {
-      icon: "/cloth.png",
-      shortcut: "/cloth.png",
-      apple: "/cloth.png",
+      icon: "/logo.png",
+      shortcut: "/logo.png",
+      apple: "/logo.png",
     },
   };
 
@@ -17,7 +17,7 @@
     return (
       <html lang="en">
         <head>
-        <link rel="icon" type="image/png"  sizes="192x192" href="/cloth.png" />
+        <link rel="icon" type="image/png"  sizes="192x192" href="/logo.png" />
       
       </head>
         <body>

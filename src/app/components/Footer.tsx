@@ -1,111 +1,60 @@
-
 "use client";
-import { Container,Typography, TextField, Button, IconButton, Link } from "@mui/material";
+import { Container, Typography, TextField, Button, IconButton, Link } from "@mui/material";
 import Grid from "@mui/material/Grid2";
-import { Facebook, Instagram, Twitter, Pinterest } from "@mui/icons-material";
+import { Facebook, Instagram } from "@mui/icons-material";
+import Image from "next/image";
 
 export default function Footer() {
   return (
     <footer style={{ backgroundColor: "#3C5652", color: "#F5F1EB", padding: "40px 0" }}>
       <Container maxWidth="lg">
-        <Grid container spacing={4}>
-    
-          <Grid size={{ xs: 12, md:4}}>
-            <Typography variant="h6" gutterBottom style={{ color: "#C08B80" }}>
-              Fashionista
-            </Typography>
-            <Typography variant="body2">
-              Your go-to destination for the latest fashion trends and styles.
-            </Typography>
+        <Grid container spacing={4} alignItems="center">
+
+       
+          <Grid  size={{ xs: 12, md:4}} display="flex" alignItems="center" gap={2}>
+            <Image src="/logo.png" alt="Styles by MakG logo" width={50} height={50} />
+            <div>
+              <Typography variant="h6" sx={{ color: "#C08B80", fontWeight: "bold" }}>
+                Styles By MakG
+              </Typography>
+              <Typography variant="body2">
+                Your go-to destination for the latest fashion trends and styles.
+              </Typography>
+            </div>
           </Grid>
 
-    
           <Grid size={{ xs: 12, md:4}}>
-  <Typography variant="h6" gutterBottom style={{ color: "#C08B80" }}>
-    Quick Links
-  </Typography>
+            <Typography variant="h6" gutterBottom sx={{ color: "#C08B80", fontWeight: "bold" }}>
+              Quick Links
+            </Typography>
+            {[
+              { label: "Home", id: "home-section" },
+              { label: "Shop", id: "product-section" },
+              { label: "About Our Products", id: "about-products-section" },
+              { label: "About Our Clients", id: "about-clients-section" },
+              { label: "Contact", id: "contact-section" },
+              { label: "Testimonials", id: "testimonial-section" }
+            ].map((item, index) => (
+              <Link
+                key={index}
+                href={`#${item.id}`}
+                color="inherit"
+                underline="hover"
+                display="block"
+                sx={{ cursor: "pointer" }}
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </Grid>
 
-  <Link href="#home-section" 
-   color="inherit"
-   underline="hover"
-   display="block"
-   onClick={(e) => {
-     e.preventDefault();
-     document.getElementById("home-section")?.scrollIntoView({ behavior: "smooth" });
-   }}>
-    Home
-  </Link>
-
-  <Link
-    href="#product-section"
-    color="inherit"
-    underline="hover"
-    display="block"
-    onClick={(e) => {
-      e.preventDefault();
-      document.getElementById("product-section")?.scrollIntoView({ behavior: "smooth" });
-    }}
-  >
-    Shop
-  </Link>
-
-  <Link
-  href="#about-products-section"
-  color="inherit"
-  underline="hover"
-  display="block"
-  onClick={(e) => {
-    e.preventDefault();
-    document.getElementById("about-products-section")?.scrollIntoView({ behavior: "smooth" });
-  }}
->
-  About Our Products
-</Link>
-
-<Link
-  href="#about-clients-section"
-  color="inherit"
-  underline="hover"
-  display="block"
-  onClick={(e) => {
-    e.preventDefault();
-    document.getElementById("about-clients-section")?.scrollIntoView({ behavior: "smooth" });
-  }}
->
-  About Our Clients
-</Link>
-
-
-  <Link
-    href="#contact-section"
-    color="inherit"
-    underline="hover"
-    display="block"
-    onClick={(e) => {
-      e.preventDefault();
-      document.getElementById("contact-section")?.scrollIntoView({ behavior: "smooth" });
-    }}
-  >
-    Contact
-  </Link>
-  <Link
-    href="#testimonial-section"
-    color="inherit"
-    underline="hover"
-    display="block"
-    onClick={(e) => {
-      e.preventDefault();
-      document.getElementById("testimonial-section")?.scrollIntoView({ behavior: "smooth" });
-    }}
-  >
-    Testimonials
-  </Link>
-</Grid>
-
-
-         
+   
           <Grid size={{ xs: 12, md:4}}>
-            <Typography variant="h6" gutterBottom style={{ color: "#C08B80" }}>
+            <Typography variant="h6" gutterBottom sx={{ color: "#C08B80", fontWeight: "bold" }}>
               Subscribe to our Newsletter
             </Typography>
             <TextField
@@ -126,29 +75,28 @@ export default function Footer() {
             <Button variant="contained" fullWidth sx={{ backgroundColor: "#C08B80", color: "#F5F1EB" }}>
               Subscribe
             </Button>
-            <div style={{ marginTop: "15px" }}>
-              <IconButton component="a" href="https://facebook.com" sx={{ color: "#F5F1EB" }}>
-                <Facebook />
-              </IconButton>
-              <IconButton component="a" href="https://instagram.com" sx={{ color: "#F5F1EB" }}>
-                <Instagram />
-              </IconButton>
-              <IconButton component="a" href="https://twitter.com" sx={{ color: "#F5F1EB" }}>
-                <Twitter />
-              </IconButton>
-              <IconButton component="a" href="https://pinterest.com" sx={{ color: "#F5F1EB" }}>
-                <Pinterest />
-              </IconButton>
-            </div>
+
+      
+            <Grid container spacing={1} sx={{ marginTop: "15px" }}>
+              <Grid >
+                <IconButton component="a" href="https://www.facebook.com/share/1GoaJHQse5/" sx={{ color: "#F5F1EB" }}>
+                  <Facebook />
+                </IconButton>
+              </Grid>
+              <Grid>
+                <IconButton component="a" href="https://www.instagram.com/stylesbymakg/?igsh=MTg2eGFqOHhwcWkzNQ%3D%3D#-" sx={{ color: "#F5F1EB" }}>
+                  <Instagram />
+                </IconButton>
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
 
     
-        <Typography variant="body2" align="center" style={{ marginTop: "20px", color: "#F5F1EB" }}>
-          © {new Date().getFullYear()} Fashionista. All rights reserved.
+        <Typography variant="body2" align="center" sx={{ marginTop: "20px", color: "#F5F1EB" }}>
+          © {new Date().getFullYear()} Styles By MakG. All rights reserved.
         </Typography>
       </Container>
     </footer>
   );
 }
-

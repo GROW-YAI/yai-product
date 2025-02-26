@@ -9,12 +9,12 @@ import Footer from "./components/Footer";
 import Testimonials from "./components/Testimonals";
 
 const images = [
-  { img: '/hoodies.png', title: 'Hoodie', description: 'Warm hoodie for all seasons'},
-  { img: '/scafs.png', title: 'Scarf', description: 'Elegant scarf for all occasions' },
-  { img: '/Kante1.png', title: 'Kente Cloth', description: 'Authentic Kente fabric'}, 
-  { img: '/heropic2.png', title: 'Fashion Hero', description: 'Stand out with bold fashion' },
-  { img: '/suit.png', title: 'Suit Collection', description: 'Classic suits for men'}, 
-  { img: '/bag.png', title: 'Bag Collection', description: 'Fashion bag for all occasions '}
+  { img: '/maxi.png', title: 'Elegant Maxi Dress', description: ' A flowing Ankara maxi dress with bold patterns, perfect for formal and cultural events.'},
+  { img: '/africansuit.png', title: 'Classic African Suit', description: ' A tailored Ankara suit combining tradition with contemporary elegance, ideal for special occasions.' },
+  { img: '/dashiki.png', title: 'Casual Dashiki Look', description: 'A relaxed yet fashionable dashiki top with bold prints, paired with jeans for everyday wear.'}, 
+  { img: '/short.png', title: 'Vibrant Short Dress', description: 'A flared African print dress with rich colors, designed for a fun and trendy look.' },
+  { img: '/jumpsuit.png', title: 'Chic Ankara Jumpsuit', description: 'A stylish, fitted jumpsuit that blends tradition with modern fashion. Great for both casual and semi-formal wear.'}, 
+  { img: '/shirt.png', title: 'Stylish Ankara Shirt', description: 'A modern African print shirt paired with fitted trousers, perfect for a smart-casual look.Fashion bag for all occasions '}
 ];
 
 
@@ -28,9 +28,9 @@ export default function Home() {
 </Box>
 
     <HeroSection
-      title="StyleSphere"
+      title="Styles By MakG"
       subtitle="Elevate Your Style, Define Your Sphere"
-      backgroundImage="/heropic.png"
+      backgroundImage="/her.png"
     />
       </Box>
     <Box id="about-clients-section">
@@ -46,9 +46,9 @@ export default function Home() {
     <Box id="about-products-section">
     <AboutInfo 
       title="About Our Products"
-      description="StyleSphere offers affordable and flexible pricing packages, ensuring inclusivity for different budgets. Clients also enjoy convenient home and office delivery, along with mobile styling consultations, making the entire fashion experience seamless, from design to doorstep."
+      description="Styles By MakG offers affordable and flexible pricing packages, ensuring inclusivity for different budgets. Clients also enjoy convenient home and office delivery, along with mobile styling consultations, making the entire fashion experience seamless, from design to doorstep."
       // bgColor="#f6ece8"
-      imageSrc="/product.png"
+      imageSrc="/product1.png"
       reverse={true} 
       bgColor="rgba(144, 104, 96, 0.2)" 
     />
