@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   AppBar,
   Toolbar,
@@ -25,11 +25,12 @@ const navItems = [
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>("home-section");
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
- 
+
   const handleScroll = (e: React.MouseEvent, sectionId: string) => {
     e.preventDefault();
   
@@ -43,6 +44,26 @@ export default function Navbar() {
     }
     setMobileOpen(false);
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      let currentSection = "home-section"; // Default to home section
+      for (const item of navItems) {
+        const section = document.getElementById(item.id);
+        if (section) {
+          const rect = section.getBoundingClientRect();
+          if (rect.top <= 100 && rect.bottom >= 100) {
+            currentSection = item.id;
+            break;
+          }
+        }
+      }
+      setActiveSection(currentSection);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <>
@@ -60,11 +81,10 @@ export default function Navbar() {
         }}
       >
         <Toolbar sx={{ justifyContent: "space-between" }}>
-
           <Box display="flex" alignItems="center">
             <Image
               src="/logo.png"
-              alt="Styles by MakG logo" 
+              alt="Styles by MakG logo"
               width={60}
               height={50}
             />
@@ -75,11 +95,12 @@ export default function Navbar() {
               <Typography
                 key={index}
                 sx={{
-                  color: "#fff",
+                  color: activeSection === item.id ? "#8B5E58" : "#fff",
                   fontWeight: "bold",
                   transition: "color 0.3s ease",
                   "&:hover": { color: "#8B5E58" },
                   cursor: "pointer",
+                  borderBottom: activeSection === item.id ? "2px solid #8B5E58" : "none",
                 }}
                 onClick={(e) => handleScroll(e, item.id)}
               >
@@ -88,7 +109,13 @@ export default function Navbar() {
             ))}
           </Box>
 
-          <IconButton edge="end" color="inherit" aria-label="menu" onClick={handleDrawerToggle} sx={{ display: { md: "none" } }}>
+          <IconButton
+            edge="end"
+            color="inherit"
+            aria-label="menu"
+            onClick={handleDrawerToggle}
+            sx={{ display: { md: "none" } }}
+          >
             <MenuIcon />
           </IconButton>
         </Toolbar>
@@ -100,16 +127,32 @@ export default function Navbar() {
         onClose={handleDrawerToggle}
         PaperProps={{
           sx: {
-            bgcolor: "rgba(192, 139, 128, 0.5)", 
-            backdropFilter: "blur(12px)", 
-            color: "#fff", 
+            bgcolor: "rgba(192, 139, 128, 0.5)",
+            backdropFilter: "blur(12px)",
+            color: "#fff",
           },
         }}
       >
         <List sx={{ width: 200 }}>
           {navItems.map((item, index) => (
-            <ListItem key={index} onClick={(e) => handleScroll(e, item.id)} sx={{ textAlign: "center", cursor: "pointer" }}>
-              <ListItemText primary={item.label} sx={{ color: "#C08B80", fontWeight: "bold", textAlign: "center" }} />
+            <ListItem
+              key={index}
+              onClick={(e) => handleScroll(e, item.id)}
+              sx={{
+                textAlign: "center",
+                cursor: "pointer",
+                bgcolor: activeSection === item.id ? "rgba(139, 94, 88, 0.3)" : "transparent",
+                borderRadius: "8px",
+              }}
+            >
+              <ListItemText
+                primary={item.label}
+                sx={{
+                  color: activeSection === item.id ? "#8B5E58" : "#C08B80",
+                  fontWeight: "bold",
+                  textAlign: "center",
+                }}
+              />
             </ListItem>
           ))}
         </List>
