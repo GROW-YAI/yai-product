@@ -30,7 +30,7 @@ export default function Home() {
     <HeroSection
       title="Styles By MakG"
       subtitle="Elevate Your Style, Define Your Sphere"
-      backgroundImage="/her.png"
+      backgroundImage="/heropic.png"
     />
       </Box>
     <Box id="about-clients-section">

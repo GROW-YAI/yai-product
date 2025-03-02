@@ -45,7 +45,7 @@ const ContactForm = () => {
                             position: 'absolute',
                             width: '90%',
                             height: '90%',
-                            backgroundImage: "url('/heropic.png')",
+                            backgroundImage: "url('/her.png')",
                             backgroundSize: 'cover',
                             backgroundPosition: 'center',
                             zIndex: 2
