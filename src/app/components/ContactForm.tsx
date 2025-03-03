@@ -1,5 +1,6 @@
 'use client';
 import { Stack, TextField, Button, Typography, Box, useMediaQuery, useTheme } from '@mui/material';
+import { speakText } from "../utilis/textToSpeech";
 
 const ContactForm = () => {
     const theme = useTheme();
@@ -120,17 +121,19 @@ const ContactForm = () => {
                             }
                         }}
                     />
-                    <Button
-                        variant="contained"
-                        type="submit"
-                        sx={{
-                            bgcolor: '#3C5652',
-                            color: '#FFF',
-                            '&:hover': { bgcolor: '#2A4A44' }
-                        }}
-                    >
-                        Submit
-                    </Button>
+                   <Button
+      variant="contained"
+      type="submit"
+      sx={{
+        bgcolor: "#3C5652",
+        color: "#FFF",
+        "&:hover": { bgcolor: "#2A4A44" },
+      }}
+      onClick={() => speakText("Form submitted successfully")}
+      onMouseEnter={() => speakText("Submit button")}
+    >
+      Submit
+    </Button>
                 </Stack>
             </Box>
         </Box>

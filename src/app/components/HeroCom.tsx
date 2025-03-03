@@ -1,5 +1,6 @@
 import { Box, Typography, Container, Button } from "@mui/material";
 import Link from 'next/link';
+import { speakText } from "../utilis/textToSpeech";
 
 interface HeroSectionProps {
   title: string;
@@ -61,28 +62,30 @@ const HeroSection = ({ title, subtitle, backgroundImage }: HeroSectionProps) => 
         >
           {subtitle}
         </Typography>
-        <Link href="/#product-section" >
-          <Button
-            variant="contained"
-            sx={{
-              marginTop: 3,
-              backgroundColor: "#C08B80",
-              color: "white",
-              borderRadius: "20px",
-              padding: "10px 20px", 
-              fontWeight: "bold",
-              boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.4)", 
-              transition: "all 0.3s ease-in-out", 
-              "&:hover": {
-                transform: "scale(1.05)",
-                backgroundColor: "#8b5e56", 
-                boxShadow: "0px 6px 8px rgba(0, 0, 0, 0.3)", 
-              },
-            }}
-          >
-            Get Started
-          </Button>
-        </Link>
+        <Link href="/#product-section" passHref>
+      <Button
+        variant="contained"
+        sx={{
+          marginTop: 3,
+          backgroundColor: "#C08B80",
+          color: "white",
+          borderRadius: "20px",
+          padding: "10px 20px",
+          fontWeight: "bold",
+          boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.4)",
+          transition: "all 0.3s ease-in-out",
+          "&:hover": {
+            transform: "scale(1.05)",
+            backgroundColor: "#8b5e56",
+            boxShadow: "0px 6px 8px rgba(0, 0, 0, 0.3)",
+          },
+        }}
+        onClick={() => speakText("Navigating to product section")}
+        onMouseEnter={() => speakText("Get Started button")}
+      >
+        Get Started
+      </Button>
+    </Link>
       </Container>
     </Box>
   );
