@@ -21,6 +21,7 @@ const navItems = [
   { label: "Company", id: "about-products-section" },
   { label: "Services", id: "product-section" },
   { label: "Contact", id: "contact-section" },
+  {label:"Testimonials", id:"testimonial-section"}
 ];
 
 export default function Navbar() {
