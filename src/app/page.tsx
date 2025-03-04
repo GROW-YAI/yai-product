@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import Testimonials from "./components/Testimonals";
 import { speakText } from "./utilis/textToSpeech";
 import { Mic, MicOff } from "@mui/icons-material";
+import OurSolution from "./components/OurSolution";
 
 const images = [
   { img: "/maxi.png", title: "Elegant Maxi Dress", description: "A flowing Ankara maxi dress with bold patterns, perfect for formal and cultural events." },
@@ -98,7 +99,6 @@ export default function Home() {
         />
       </Box>
 
-     
       <Box id="about-products-section" data-tts="About Our Products section">
         <AboutInfo
           title="About Our Products"
@@ -107,6 +107,10 @@ export default function Home() {
           reverse={true}
           bgColor="rgba(144, 104, 96, 0.2)"
         />
+      </Box>
+
+      <Box data-tts="Our-solution section">
+        <OurSolution />
       </Box>
 
      
