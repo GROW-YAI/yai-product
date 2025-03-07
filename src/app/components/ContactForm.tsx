@@ -13,7 +13,7 @@ const ContactForm = () => {
                 justifyContent: 'center',
                 alignItems: 'center',
                 minHeight: '100vh',
-                backgroundColor: '#3C5652',
+                backgroundColor: '#242424',
                 padding: 4
             }}
         >
@@ -22,7 +22,7 @@ const ContactForm = () => {
                     display: 'flex',
                     maxWidth: 1000,
                     width: '100%',
-                    backgroundColor: '#F5F1EB',
+                    backgroundColor:"#F5F5DC",
                     borderRadius: 2,
                     overflow: 'hidden',
                     boxShadow: 3,
@@ -37,7 +37,7 @@ const ContactForm = () => {
                         display: isSmallScreen ? 'none' : 'flex', 
                         justifyContent: 'center',
                         alignItems: 'center',
-                        backgroundColor: '#1A3C34',
+                        backgroundColor: '#4A001F', 
                         overflow: 'hidden'
                     }}
                 >
@@ -64,18 +64,18 @@ const ContactForm = () => {
                         textAlign: 'left'
                     }}
                 >
-                    <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#3C5652' }}>
+                    <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#800020' }}>
                         Visit Our Store
                     </Typography>
-                    <Typography variant="body2" sx={{ color: '#3C5652' }}>
-                    Oxford Street in Osu, Accra, Ghana
+                    <Typography variant="body2" sx={{ color: '#800020' }}>
+                        Oxford Street in Osu, Accra, Ghana
                     </Typography>
-                    <Typography variant="body2" sx={{ color: '#3C5652', mt: 1 }}>
+                    <Typography variant="body2" sx={{ color: '#800020', mt: 1 }}>
                         <strong>Mail:</strong> stylesphere@mysite.com <br />
                         <strong>Tel:</strong> 123-456-7890
                     </Typography>
 
-                    <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#3C5652', mt: 3 }}>
+                    <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#800020', mt: 3 }}>
                         Write Us
                     </Typography>
 
@@ -85,7 +85,7 @@ const ContactForm = () => {
                         fullWidth
                         sx={{
                             '& .MuiOutlinedInput-root': {
-                                backgroundColor: 'white'
+                                backgroundColor: '#FFF'
                             }
                         }}
                     />
@@ -95,7 +95,7 @@ const ContactForm = () => {
                         fullWidth
                         sx={{
                             '& .MuiOutlinedInput-root': {
-                                backgroundColor: 'white'
+                                backgroundColor: '#FFF'
                             }
                         }}
                     />
@@ -105,7 +105,7 @@ const ContactForm = () => {
                         fullWidth
                         sx={{
                             '& .MuiOutlinedInput-root': {
-                                backgroundColor: 'white'
+                                backgroundColor: '#FFF'
                             }
                         }}
                     />
@@ -117,7 +117,7 @@ const ContactForm = () => {
                         fullWidth
                         sx={{
                             '& .MuiOutlinedInput-root': {
-                                backgroundColor: 'white'
+                                backgroundColor: '#FFF'
                             }
                         }}
                     />
@@ -125,9 +125,10 @@ const ContactForm = () => {
       variant="contained"
       type="submit"
       sx={{
-        bgcolor: "#3C5652",
-        color: "#FFF",
-        "&:hover": { bgcolor: "#2A4A44" },
+        bgcolor: "#800020", 
+        color: "#000000", 
+        fontWeight: "bold",
+        "&:hover": { bgcolor: "#66001A" }, 
       }}
       onClick={() => speakText("Form submitted successfully")}
       onMouseEnter={() => speakText("Submit button")}

@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
-import { ImageList, ImageListItem, ImageListItemBar, IconButton, Collapse, Box, Typography, useMediaQuery } from "@mui/material";
+import { ImageList, ImageListItem, ImageListItemBar, IconButton, Collapse, Box, Typography, useMediaQuery, Container } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { motion } from "framer-motion";
 
@@ -61,7 +61,31 @@ const ProductGallery = ({ images }: ProductGalleryProps) => {
         <Typography variant="h4" align="center" fontWeight="bold" gutterBottom>
           Product Showcase
         </Typography>
-      </motion.div>
+        <Container sx={{ position: "relative", width: "20%", height: 4, backgroundColor: "black", borderRadius: 3, overflow: "hidden" }}>
+  <motion.div
+    style={{
+      width: "12px",
+      height: "12px",
+      borderRadius: "50%",
+      background: "linear-gradient(45deg, gold, orange)",
+      position: "absolute",
+      top: "-4px",
+      left: "0%",
+      boxShadow: "0px 0px 8px rgba(255, 215, 0, 0.8)",
+    }}
+    animate={{
+      left: ["0%", "100%", "0%"],
+      scale: [1, 1.3, 1],
+    }}
+    transition={{
+      duration: 8,
+      repeat: Infinity,
+      ease: "easeInOut",
+    }}
+  />
+</Container>
+
+      {/* </motion.div> */}
 
      
       <ImageList variant="woven" cols={cols} gap={8} sx={{ width: "100%", overflow: "hidden" }}>
@@ -103,6 +127,7 @@ const ProductGallery = ({ images }: ProductGalleryProps) => {
           </ImageListItem>
         ))}
       </ImageList>
+      </motion.div>
     </Box>
   );
 };

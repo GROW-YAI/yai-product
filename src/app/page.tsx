@@ -74,18 +74,18 @@ export default function Home() {
         <HeroSection
           title="Styles By MakG"
           subtitle="Elevate Your Style, Define Your Sphere"
-          backgroundImage="/heropic.png"
+          backgroundImage="/her.png"
         />
 
   
-        <Box sx={{ position: "fixed", top: "10px", right: "20px", zIndex: 20 }}>
-          <button
-            onClick={toggleTts}
-            className="fixed bottom-5 right-5 bg-[#9b6a6c] text-white p-3 rounded-full shadow-lg hover:bg-[#b07a7c] transition"
-          >
-            {ttsEnabled ? <Mic fontSize="large" /> : <MicOff fontSize="large" />}
-          </button>
-        </Box>
+<Box sx={{ position: "fixed", top: "10px", right: "20px", zIndex: 20 }}>
+  <button
+    onClick={toggleTts}
+    className="fixed bottom-5 right-5 bg-[#C9A636]   text-gold p-3 rounded-full shadow-lg hover:bg-[#1C1C1C] transition"
+  >
+    {ttsEnabled ? <Mic fontSize="large" /> : <MicOff fontSize="large" />}
+  </button>
+</Box>
       </Box>
 
       
@@ -93,7 +93,7 @@ export default function Home() {
         <AboutInfo
           title="About Innovator"
           description="Margaret’s Personalized Virtual Fashion Boutique is a revolutionary online platform that makes customized fashion accessible and eco-friendly. Clients can design their outfits using an intuitive virtual interface, ensuring their unique style and preferences are met. The boutique incorporates a 3D body measurement app to provide precise sizing, eliminating common fit issues. Customers can choose from a range of eco-friendly fabrics, supporting sustainable fashion."
-          bgColor="#f6ece8"
+          bgColor="#202120"
           imageSrc="/inovator.png"
           reverse={false}
         />
@@ -105,7 +105,7 @@ export default function Home() {
           description="Styles By MakG offers affordable and flexible pricing packages, ensuring inclusivity for different budgets. Clients also enjoy convenient home and office delivery, along with mobile styling consultations, making the entire fashion experience seamless, from design to doorstep."
           imageSrc="/product1.png"
           reverse={true}
-          bgColor="rgba(144, 104, 96, 0.2)"
+          bgColor="#202120"
         />
       </Box>
 

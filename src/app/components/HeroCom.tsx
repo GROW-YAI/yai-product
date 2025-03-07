@@ -20,8 +20,8 @@ const HeroSection = ({ title, subtitle, backgroundImage }: HeroSectionProps) => 
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        color: "#C08B80", 
-        backgroundColor: "#F5E8DD", 
+        color: "#FFFFF0", 
+        backgroundColor: "#000000", 
       }}
     >
     
@@ -32,8 +32,7 @@ const HeroSection = ({ title, subtitle, backgroundImage }: HeroSectionProps) => 
           left: 0,
           width: "100%",
           height: "100%",
-          background: "linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3))",
-
+          background: "linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5))",
         }}
       />
       
@@ -49,7 +48,7 @@ const HeroSection = ({ title, subtitle, backgroundImage }: HeroSectionProps) => 
           fontWeight={700} 
           gutterBottom 
           sx={{ 
-            textShadow: "2px 2px 5px rgba(0, 0, 0, 0.3)",
+            textShadow: "2px 2px 10px rgba(255, 255, 240, 0.6)", 
             fontSize: { xs: "2rem", sm: "3rem", md: "4rem" }
           }}
         >
@@ -67,17 +66,18 @@ const HeroSection = ({ title, subtitle, backgroundImage }: HeroSectionProps) => 
         variant="contained"
         sx={{
           marginTop: 3,
-          backgroundColor: "#C08B80",
-          color: "white",
+          backgroundColor: "#000000",
+          color: "#FFD700", 
+          border: "2px solid #FFD700", 
           borderRadius: "20px",
           padding: "10px 20px",
           fontWeight: "bold",
-          boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.4)",
+          boxShadow: "0px 4px 10px rgba(255, 215, 0, 0.6)", 
           transition: "all 0.3s ease-in-out",
           "&:hover": {
             transform: "scale(1.05)",
-            backgroundColor: "#8b5e56",
-            boxShadow: "0px 6px 8px rgba(0, 0, 0, 0.3)",
+            backgroundColor: "#222222", 
+            boxShadow: "0px 6px 12px rgba(255, 215, 0, 0.8)",
           },
         }}
         onClick={() => speakText("Navigating to product section")}

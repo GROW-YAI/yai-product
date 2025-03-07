@@ -22,17 +22,16 @@ export default function Testimonials() {
     <Box
       id="testimonial-section"
       sx={{
-        bgcolor: "#F5F1EB",
+        bgcolor: "#FAF3E0", 
         py: 8,
         px: 3,
         textAlign: "center",
         position: "relative",
       }}
     >
-      <Typography variant="h4" sx={{ color: "#3C5652", fontWeight: "bold", mb: 4 }}>
+      <Typography variant="h4" sx={{ color: "#B88E2F", fontWeight: "bold", mb: 4 }}>
         What Our Clients Say
       </Typography>
-
 
       <IconButton
         className="swiper-button-prev"
@@ -41,9 +40,9 @@ export default function Testimonials() {
           left: 20,
           top: "50%",
           transform: "translateY(-50%)",
-          bgcolor: "#3C5652",
+          bgcolor: "#B88E2F",
           color: "white !important",
-          "&:hover": { bgcolor: "#2A3F3C" },
+          "&:hover": { bgcolor: "#A67C00" },
           width: 40,
           height: 40,
           boxShadow: 2,
@@ -67,8 +66,8 @@ export default function Testimonials() {
           <SwiperSlide key={index}>
             <Card
               sx={{
-                bgcolor: "white",
-                color: "#3C5652",
+                bgcolor: "#FFF8E1", // Light ivory
+                color: "#B88E2F",
                 borderRadius: "12px",
                 textAlign: "left",
                 p: 4,
@@ -76,11 +75,11 @@ export default function Testimonials() {
               }}
             >
               <CardContent>
-                <Avatar sx={{ bgcolor: "#C08B80", mb: 2 }}>{testimonial.name.charAt(0)}</Avatar>
+                <Avatar sx={{ bgcolor: "#D4AF37", mb: 2 }}>{testimonial.name.charAt(0)}</Avatar>
                 <Typography variant="body1" sx={{ fontStyle: "italic", mb: 2 }}>
                   &ldquo;{testimonial.text}&rdquo;
                 </Typography>
-                <Typography variant="subtitle2" sx={{ fontWeight: "bold", color: "#C08B80" }}>
+                <Typography variant="subtitle2" sx={{ fontWeight: "bold", color: "#B88E2F" }}>
                   — {testimonial.name}
                 </Typography>
               </CardContent>
@@ -89,7 +88,6 @@ export default function Testimonials() {
         ))}
       </Swiper>
 
-   
       <IconButton
         className="swiper-button-next"
         sx={{
@@ -97,9 +95,9 @@ export default function Testimonials() {
           right: 20,
           top: "50%",
           transform: "translateY(-50%)",
-          bgcolor: "#3C5652",
+          bgcolor: "#B88E2F",
           color: "white !important",
-          "&:hover": { bgcolor: "#2A3F3C" },
+          "&:hover": { bgcolor: "#A67C00" },
           width: 40,
           height: 40,
           boxShadow: 2,

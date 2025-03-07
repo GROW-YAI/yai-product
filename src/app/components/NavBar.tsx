@@ -69,86 +69,86 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const isMoreActive = moreItems.some(item => item.id === activeSection);
+  const isMoreActive = moreItems.some((item) => item.id === activeSection);
 
   return (
     <>
-      <AppBar
-        position="absolute"
-        sx={{
-          top: 20,
-          left: "50%",
-          transform: "translateX(-50%)",
-          width: "90%",
-          bgcolor: "rgba(192, 139, 128, 0.7)",
-          backdropFilter: "blur(14px)",
-          borderRadius: "30px",
-          padding: "8px 20px",
-        }}
-      >
+    <AppBar
+  position="absolute"
+  sx={{
+    top: 20,
+    left: "50%",
+    transform: "translateX(-50%)",
+    width: "90%",
+    bgcolor: "rgba(34, 34, 34, 0.9)", 
+    backdropFilter: "blur(10px)",
+    borderRadius: "30px",
+    padding: "8px 20px",
+    boxShadow: "0px 4px 12px rgba(230, 194, 0, 0.3)", 
+  }}
+>
         <Toolbar sx={{ justifyContent: "space-between" }}>
           <Box display="flex" alignItems="center">
             <Image src="/logo.png" alt="Styles by MakG logo" width={60} height={50} />
           </Box>
 
           <Box sx={{ display: { xs: "none", md: "flex" }, gap: 3 }}>
-            {navItems.map((item, index) => (
-              <Typography
-                key={index}
-                sx={{
-                  color: activeSection === item.id ? "#8B5E58" : "#fff",
-                  fontWeight: "bold",
-                  transition: "color 0.3s ease",
-                  "&:hover": { color: "#8B5E58" },
-                  cursor: "pointer",
-                  borderBottom: activeSection === item.id ? "2px solid #8B5E58" : "none",
-                }}
-                onClick={(e) => handleScroll(e, item.id)}
-              >
-                {item.label}
-              </Typography>
-            ))}
+          {navItems.map((item) => (
+  <Typography
+    key={item.id} // Add a unique key here
+    sx={{
+      color: activeSection === item.id ? "#E6C200" : "#F5F5F5",
+      fontWeight: "bold",
+      transition: "color 0.3s ease",
+      "&:hover": { color: "#D4AF37" },
+      cursor: "pointer",
+      borderBottom: activeSection === item.id ? "2px solid #E6C200" : "none",
+    }}
+  >
+    {item.label}
+  </Typography>
+))}
             <Box>
               <Typography
                 sx={{
-                  color: isMoreActive ? "#8B5E58" : "#fff",
+                  color: isMoreActive ? "#FFD700" : "#fff",
                   fontWeight: "bold",
                   display: "flex",
                   alignItems: "center",
                   cursor: "pointer",
-                  borderBottom: isMoreActive ? "2px solid #8B5E58" : "none",
+                  borderBottom: isMoreActive ? "2px solid #FFD700" : "none",
                 }}
                 onClick={handleMenuOpen}
               >
                 More <ExpandMoreIcon />
               </Typography>
-              <Menu 
-  anchorEl={anchorEl} 
-  open={Boolean(anchorEl)} 
-  onClose={handleMenuClose} 
-  sx={{ 
-    mt: 1, 
-    "& .MuiPaper-root": {
-      bgcolor: "rgba(255, 255, 255, 0.9)", 
-      borderRadius: "12px", 
-      boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)", 
-    },
-  }}
->
-  {moreItems.map((item, index) => (
-    <MenuItem 
-      key={index} 
-      onClick={(e) => handleScroll(e, item.id)}
-      sx={{
-        fontWeight: "bold",
-        color: "#8B5E58",
-        "&:hover": { bgcolor: "rgba(192, 139, 128, 0.2)" },
-      }}
-    >
-      {item.label}
-    </MenuItem>
-  ))}
-</Menu>
+              <Menu
+                anchorEl={anchorEl}
+                open={Boolean(anchorEl)}
+                onClose={handleMenuClose}
+                sx={{
+                  mt: 1,
+                  "& .MuiPaper-root": {
+                    bgcolor: "rgba(0, 0, 0, 0.9)",
+                    borderRadius: "12px",
+                    boxShadow: "0px 4px 12px rgba(255, 215, 0, 0.3)",
+                  },
+                }}
+              >
+                {moreItems.map((item, index) => (
+                  <MenuItem
+                    key={index}
+                    onClick={(e) => handleScroll(e, item.id)}
+                    sx={{
+                      fontWeight: "bold",
+                      color: "#FFD700",
+                      "&:hover": { bgcolor: "rgba(255, 215, 0, 0.2)" },
+                    }}
+                  >
+                    {item.label}
+                  </MenuItem>
+                ))}
+              </Menu>
             </Box>
           </Box>
 
@@ -162,25 +162,30 @@ export default function Navbar() {
   anchor="right"
   open={mobileOpen}
   onClose={handleDrawerToggle}
-  sx={{ "& .MuiDrawer-paper": { bgcolor: "rgba(192, 139, 128, 0.5)", backdropFilter: "blur(12px)", color: "#fff" } }}
+  sx={{
+    "& .MuiDrawer-paper": {
+      bgcolor: "rgba(44, 44, 44, 0.9)", 
+      backdropFilter: "blur(10px)",
+      color: "#E6C200", 
+    },
+  }}
 >
         <List sx={{ width: 200 }}>
           {[...navItems, { label: "More", id: "more", subItems: moreItems }].map((item, index) => (
-            <>
-              <ListItem key={index} onClick={(e) => handleScroll(e, item.id)} sx={{ cursor: "pointer" }}>
-                <ListItemText primary={item.label} sx={{ color: activeSection === item.id ? "#8B5E58" : "#C08B80" }} />
+            <div key={index}>
+              <ListItem onClick={(e) => handleScroll(e, item.id)} sx={{ cursor: "pointer" }}>
+                <ListItemText primary={item.label} sx={{ color: activeSection === item.id ? "#FFD700" : "#FFF" }} />
               </ListItem>
               {"subItems" in item &&
                 item.subItems.map((sub, subIndex) => (
                   <ListItem key={`sub-${subIndex}`} onClick={(e) => handleScroll(e, sub.id)} sx={{ pl: 4, cursor: "pointer" }}>
-                    <ListItemText primary={sub.label} sx={{ color: activeSection === sub.id ? "#8B5E58" : "#C08B80" }} />
+                    <ListItemText primary={sub.label} sx={{ color: activeSection === sub.id ? "#FFD700" : "#FFF" }} />
                   </ListItem>
                 ))}
-            </>
+            </div>
           ))}
         </List>
       </Drawer>
     </>
   );
 }
-
