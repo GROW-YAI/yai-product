@@ -1,10 +1,12 @@
 'use client';
 import { Stack, TextField, Button, Typography, Box, useMediaQuery, useTheme } from '@mui/material';
 import { speakText } from "../utilis/textToSpeech";
+import { useState } from 'react';
 
 const ContactForm = () => {
+    const [formSubmitted, setFormSubmitted] = useState(false);
     const theme = useTheme();
-    const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm')); 
+    const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
     return (
         <Box id="contact-section"
@@ -22,11 +24,11 @@ const ContactForm = () => {
                     display: 'flex',
                     maxWidth: 1000,
                     width: '100%',
-                    backgroundColor:"#F5F5DC",
+                    backgroundColor: "#F5F5DC",
                     borderRadius: 2,
                     overflow: 'hidden',
                     boxShadow: 3,
-                    flexDirection: { xs: 'column', sm: 'row' } 
+                    flexDirection: { xs: 'column', sm: 'row' }
                 }}
             >
 
@@ -34,10 +36,10 @@ const ContactForm = () => {
                     sx={{
                         flex: 1,
                         position: 'relative',
-                        display: isSmallScreen ? 'none' : 'flex', 
+                        display: isSmallScreen ? 'none' : 'flex',
                         justifyContent: 'center',
                         alignItems: 'center',
-                        backgroundColor: '#4A001F', 
+                        backgroundColor: '#4A001F',
                         overflow: 'hidden'
                     }}
                 >
@@ -54,15 +56,18 @@ const ContactForm = () => {
                     />
                 </Box>
 
-           
+               
                 <Stack
                     component="form"
+                    action="https://formspree.io/f/your-form-id" 
+                    method="POST"
                     spacing={2}
                     sx={{
                         flex: 1,
                         padding: 4,
                         textAlign: 'left'
                     }}
+                    onSubmit={() => setFormSubmitted(true)}
                 >
                     <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#800020' }}>
                         Visit Our Store
@@ -83,31 +88,23 @@ const ContactForm = () => {
                         label="First Name *"
                         name="firstName"
                         fullWidth
-                        sx={{
-                            '& .MuiOutlinedInput-root': {
-                                backgroundColor: '#FFF'
-                            }
-                        }}
+                        required
+                        sx={{ '& .MuiOutlinedInput-root': { backgroundColor: '#FFF' } }}
                     />
                     <TextField
                         label="Last Name *"
                         name="lastName"
                         fullWidth
-                        sx={{
-                            '& .MuiOutlinedInput-root': {
-                                backgroundColor: '#FFF'
-                            }
-                        }}
+                        required
+                        sx={{ '& .MuiOutlinedInput-root': { backgroundColor: '#FFF' } }}
                     />
                     <TextField
                         label="Email *"
                         name="email"
+                        type="email"
                         fullWidth
-                        sx={{
-                            '& .MuiOutlinedInput-root': {
-                                backgroundColor: '#FFF'
-                            }
-                        }}
+                        required
+                        sx={{ '& .MuiOutlinedInput-root': { backgroundColor: '#FFF' } }}
                     />
                     <TextField
                         label="Leave us a message"
@@ -115,26 +112,23 @@ const ContactForm = () => {
                         multiline
                         rows={4}
                         fullWidth
-                        sx={{
-                            '& .MuiOutlinedInput-root': {
-                                backgroundColor: '#FFF'
-                            }
-                        }}
+                        sx={{ '& .MuiOutlinedInput-root': { backgroundColor: '#FFF' } }}
                     />
-                   <Button
-      variant="contained"
-      type="submit"
-      sx={{
-        bgcolor: "#800020", 
-        color: "#000000", 
-        fontWeight: "bold",
-        "&:hover": { bgcolor: "#66001A" }, 
-      }}
-      onClick={() => speakText("Form submitted successfully")}
-      onMouseEnter={() => speakText("Submit button")}
-    >
-      Submit
-    </Button>
+                    
+                
+                    <Button
+                        variant="contained"
+                        type="submit"
+                        sx={{
+                            bgcolor: "#800020",
+                            color: "#000000",
+                            fontWeight: "bold",
+                            "&:hover": { bgcolor: "#66001A" },
+                        }}
+                        onMouseEnter={() => speakText("Submit button")}
+                    >
+                        {formSubmitted ? "Sent!" : "Submit"}
+                    </Button>
                 </Stack>
             </Box>
         </Box>

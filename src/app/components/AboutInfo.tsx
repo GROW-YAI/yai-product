@@ -38,15 +38,6 @@ const AboutInfo = ({ imageSrc, title, description, reverse, bgColor }: AboutInfo
       }
     };
   }, []);
-  
-
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setDotPosition((prev) => (prev === 100 ? 0 : 100));
-  //   }, 2000);
-
-  //   return () => clearInterval(interval);
-  // }, []);
 
   return (
     <Box
@@ -54,18 +45,23 @@ const AboutInfo = ({ imageSrc, title, description, reverse, bgColor }: AboutInfo
       ref={sectionRef}
       sx={{ width: "100%", py: 10, overflow: "hidden", position: "relative" }}
     >
-      <Box
-        sx={{
-          position: "absolute",
-          top: 0,
-          bottom: 0,
-          width: "30%",
-          backgroundColor: bgColor,
-          zIndex: 1,
-          left: reverse ? "auto" : 0,
-          right: reverse ? 0 : "auto",
-        }}
-      />
+   <Box
+  sx={{
+    position: "absolute",
+    top: 0,
+    bottom: 0,
+    width: "30%",
+    backgroundColor: bgColor, 
+    zIndex: 1,
+    left: reverse ? "auto" : 0,
+    right: reverse ? 0 : "auto",
+    "@media (max-width: 768px)": {
+      opacity: 0.5, 
+    },
+  }}
+/>
+
+
 
       <Grid
         container
@@ -131,7 +127,7 @@ const AboutInfo = ({ imageSrc, title, description, reverse, bgColor }: AboutInfo
 
 
 
-              <Typography variant="body1" sx={{ mt: 2, color: "#666" }}>
+              <Typography variant="body1" sx={{ mt: 2, color: "#222" }}>
                 {description}
               </Typography>
 
