@@ -4,7 +4,14 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Autoplay, Navigation } from "swiper/modules";
-import { Box, Card, CardContent, Typography, Avatar, IconButton } from "@mui/material";
+import {
+  Box,
+  Card,
+  CardContent,
+  Typography,
+  Avatar,
+  IconButton,
+} from "@mui/material";
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
 
 const testimonials = [
@@ -22,22 +29,31 @@ export default function Testimonials() {
     <Box
       id="testimonial-section"
       sx={{
-        bgcolor: "#FAF3E0", 
+        bgcolor: "#FAF3E0",
         py: 8,
-        px: 3,
+        px: { xs: 2, sm: 4, md: 6 },
         textAlign: "center",
         position: "relative",
       }}
     >
-      <Typography variant="h4" sx={{ color: "#B88E2F", fontWeight: "bold", mb: 4 }}>
+      {/* Section Heading */}
+      <Typography
+        variant="h4"
+        sx={{
+          color: "#B88E2F",
+          fontWeight: "bold",
+          mb: { xs: 4, md: 6 },
+        }}
+      >
         What Our Clients Say
       </Typography>
 
+      {/* Prev Button */}
       <IconButton
         className="swiper-button-prev"
         sx={{
           position: "absolute",
-          left: 20,
+          left: { xs: 5, md: 30 },
           top: "50%",
           transform: "translateY(-50%)",
           bgcolor: "#B88E2F",
@@ -45,41 +61,55 @@ export default function Testimonials() {
           "&:hover": { bgcolor: "#A67C00" },
           width: 40,
           height: 40,
-          boxShadow: 2,
+          zIndex: 10,
+          boxShadow: 3,
         }}
       >
         <ArrowBackIos fontSize="small" />
       </IconButton>
 
+      {/* Swiper Carousel */}
       <Swiper
         slidesPerView={1}
-        spaceBetween={30}
+        spaceBetween={24}
+        centeredSlides
         modules={[Autoplay, Navigation]}
         autoplay={{ delay: 5000, disableOnInteraction: false }}
         navigation={{ nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" }}
         breakpoints={{
           768: { slidesPerView: 1 },
-          1024: { slidesPerView: 2 },
+          1024: { slidesPerView: 2, spaceBetween: 32 },
         }}
+        style={{ paddingBottom: "40px" }}
       >
         {testimonials.map((testimonial, index) => (
-          <SwiperSlide key={index}>
+          <SwiperSlide key={index} style={{ display: "flex", justifyContent: "center" }}>
             <Card
               sx={{
-                bgcolor: "#FFF8E1", // Light ivory
+                bgcolor: "#FFF8E1",
                 color: "#B88E2F",
-                borderRadius: "12px",
+                borderRadius: "16px",
                 textAlign: "left",
                 p: 4,
-                boxShadow: 5,
+                maxWidth: 450,
+                mx: "auto",
+                boxShadow: 6,
               }}
             >
               <CardContent>
-                <Avatar sx={{ bgcolor: "#D4AF37", mb: 2 }}>{testimonial.name.charAt(0)}</Avatar>
-                <Typography variant="body1" sx={{ fontStyle: "italic", mb: 2 }}>
+                <Avatar sx={{ bgcolor: "#D4AF37", mb: 2 }}>
+                  {testimonial.name.charAt(0)}
+                </Avatar>
+                <Typography
+                  variant="body1"
+                  sx={{ fontStyle: "italic", mb: 2 }}
+                >
                   &ldquo;{testimonial.text}&rdquo;
                 </Typography>
-                <Typography variant="subtitle2" sx={{ fontWeight: "bold", color: "#B88E2F" }}>
+                <Typography
+                  variant="subtitle2"
+                  sx={{ fontWeight: "bold", color: "#B88E2F" }}
+                >
                   — {testimonial.name}
                 </Typography>
               </CardContent>
@@ -88,11 +118,12 @@ export default function Testimonials() {
         ))}
       </Swiper>
 
+      {/* Next Button */}
       <IconButton
         className="swiper-button-next"
         sx={{
           position: "absolute",
-          right: 20,
+          right: { xs: 5, md: 30 },
           top: "50%",
           transform: "translateY(-50%)",
           bgcolor: "#B88E2F",
@@ -100,7 +131,8 @@ export default function Testimonials() {
           "&:hover": { bgcolor: "#A67C00" },
           width: 40,
           height: 40,
-          boxShadow: 2,
+          zIndex: 10,
+          boxShadow: 3,
         }}
       >
         <ArrowForwardIos fontSize="small" />

@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { Box} from "@mui/material";
+import { Box } from "@mui/material";
 import Navbar from "./components/NavBar";
 import HeroSection from "./components/HeroCom";
 import AboutInfo from "./components/AboutInfo";
@@ -18,15 +18,13 @@ const images = [
   { img: "/dashiki.png", title: "Casual Dashiki Look", description: "A relaxed yet fashionable dashiki top with bold prints, paired with jeans for everyday wear." },
   { img: "/short.png", title: "Vibrant Short Dress", description: "A flared African print dress with rich colors, designed for a fun and trendy look." },
   { img: "/jumpsuit.png", title: "Chic Ankara Jumpsuit", description: "A stylish, fitted jumpsuit that blends tradition with modern fashion. Great for both casual and semi-formal wear." },
-  { img: "/shirt.png", title: "Stylish Ankara Shirt", description: "A modern African print shirt paired with fitted trousers, perfect for a smart-casual look. Fashion bag for all occasions." }
+  { img: "/shirt.png", title: "Stylish Ankara Shirt", description: "A modern African print shirt paired with fitted trousers, perfect for a smart-casual look. Fashion bag for all occasions." },
 ];
 
 export default function Home() {
   const [ttsEnabled, setTtsEnabled] = useState(true);
-  // const [isTTSOn, setIsTTSOn] = useState(false);
 
   useEffect(() => {
-  
     const savedTtsSetting = localStorage.getItem("ttsEnabled");
     if (savedTtsSetting !== null) {
       setTtsEnabled(savedTtsSetting === "true");
@@ -36,7 +34,6 @@ export default function Home() {
       speakText("Welcome to Styles By MakG. Elevate your style, define your sphere.");
     }
 
- 
     const observer = new IntersectionObserver(
       (entries) => {
         if (!ttsEnabled) return;
@@ -49,46 +46,34 @@ export default function Home() {
       { threshold: 0.6 }
     );
 
-    document.querySelectorAll("[data-tts]").forEach((section) => {
-      observer.observe(section);
-    });
+    document.querySelectorAll("[data-tts]").forEach((section) => observer.observe(section));
 
     return () => observer.disconnect();
   }, [ttsEnabled]);
 
-  const toggleTts = () => {
-    const newTtsState = !ttsEnabled;
-    setTtsEnabled(newTtsState);
-    localStorage.setItem("ttsEnabled", newTtsState.toString());
-  };
-
   return (
     <>
-
-      <Box sx={{ position: "relative", height: "100vh", overflow: "hidden" }}>
-        <Box sx={{ position: "fixed", top: 0, width: "100%", zIndex: 10, backgroundColor: "white", boxShadow: 2 }}>
+      <Box id="home-section" sx={{ position: "relative", height: "100vh", overflow: "hidden" }}>
+        <Box
+          sx={{
+            position: "fixed",
+            top: 0,
+            width: "100%",
+            zIndex: 10,
+            backgroundColor: "white",
+            boxShadow: 2,
+          }}
+        >
           <Navbar />
         </Box>
 
-      
         <HeroSection
           title="Styles By MakG"
           subtitle="Elevate Your Style, Define Your Sphere"
           backgroundImage="/her.png"
         />
-
-  
-<Box sx={{ position: "fixed", top: "10px", right: "20px", zIndex: 20 }}>
-  <button
-    onClick={toggleTts}
-    className="fixed bottom-5 right-5 bg-[#C9A636]   text-gold p-3 rounded-full shadow-lg hover:bg-[#1C1C1C] transition"
-  >
-    {ttsEnabled ? <Mic fontSize="large" /> : <MicOff fontSize="large" />}
-  </button>
-</Box>
       </Box>
 
-      
       <Box id="about-clients-section" data-tts="About Innovator section">
         <AboutInfo
           title="About Innovator"
@@ -109,26 +94,22 @@ export default function Home() {
         />
       </Box>
 
-      <Box data-tts="Our-solution section">
+      <Box id="OurSolution-section" data-tts="Our-solution section">
         <OurSolution />
       </Box>
 
-     
-      <Box data-tts="Product Gallery section">
+      <Box id="product-section" data-tts="Product Gallery section">
         <ProductGallery images={images} />
       </Box>
 
-    
-      <Box data-tts="Contact Form section">
+      <Box id="contact-section" data-tts="Contact Form section">
         <ContactForm />
       </Box>
 
-  
-      <Box data-tts="Testimonials section">
+      <Box id="testimonial-section" data-tts="Testimonials section">
         <Testimonials />
       </Box>
 
-    
       <Footer />
     </>
   );
