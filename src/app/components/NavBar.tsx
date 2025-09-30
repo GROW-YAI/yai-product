@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, useEffect } from "react";
 import {
   AppBar,
@@ -26,9 +25,9 @@ const navItems = [
 ];
 
 const moreItems = [
+  { label: "Our Solution", id: "OurSolution-section" },
   { label: "Contact", id: "contact-section" },
   { label: "Testimonials", id: "testimonial-section" },
-  { label: "Our Solution", id: "OurSolution-section" },
 ];
 
 export default function Navbar() {
@@ -44,14 +43,14 @@ export default function Navbar() {
     e.preventDefault();
     const section = document.getElementById(sectionId);
     if (section) {
-      window.scrollTo({ top: section.offsetTop, behavior: "smooth" });
+      section.scrollIntoView({ behavior: "smooth", block: "start" });
     }
     setMobileOpen(false);
     handleMenuClose();
   };
 
   useEffect(() => {
-    const handleScroll = () => {
+    const handleScrollSpy = () => {
       let currentSection = "home-section";
       for (const item of [...navItems, ...moreItems]) {
         const section = document.getElementById(item.id);
@@ -65,49 +64,50 @@ export default function Navbar() {
       }
       setActiveSection(currentSection);
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScrollSpy);
+    return () => window.removeEventListener("scroll", handleScrollSpy);
   }, []);
 
   const isMoreActive = moreItems.some((item) => item.id === activeSection);
 
   return (
     <>
-    <AppBar
-  position="absolute"
-  sx={{
-    top: 20,
-    left: "50%",
-    transform: "translateX(-50%)",
-    width: "90%",
-    bgcolor: "rgba(34, 34, 34, 0.9)", 
-    backdropFilter: "blur(10px)",
-    borderRadius: "30px",
-    padding: "8px 20px",
-    boxShadow: "0px 4px 12px rgba(230, 194, 0, 0.3)", 
-  }}
->
+      <AppBar
+        position="absolute"
+        sx={{
+          top: 20,
+          left: "50%",
+          transform: "translateX(-50%)",
+          width: "90%",
+          bgcolor: "rgba(34, 34, 34, 0.9)",
+          backdropFilter: "blur(10px)",
+          borderRadius: "30px",
+          padding: "8px 20px",
+          boxShadow: "0px 4px 12px rgba(230, 194, 0, 0.3)",
+        }}
+      >
         <Toolbar sx={{ justifyContent: "space-between" }}>
           <Box display="flex" alignItems="center">
             <Image src="/logo.png" alt="Styles by MakG logo" width={60} height={50} />
           </Box>
 
           <Box sx={{ display: { xs: "none", md: "flex" }, gap: 3 }}>
-          {navItems.map((item) => (
-  <Typography
-    key={item.id} // Add a unique key here
-    sx={{
-      color: activeSection === item.id ? "#E6C200" : "#F5F5F5",
-      fontWeight: "bold",
-      transition: "color 0.3s ease",
-      "&:hover": { color: "#D4AF37" },
-      cursor: "pointer",
-      borderBottom: activeSection === item.id ? "2px solid #E6C200" : "none",
-    }}
-  >
-    {item.label}
-  </Typography>
-))}
+            {navItems.map((item) => (
+              <Typography
+                key={item.id}
+                onClick={(e) => handleScroll(e, item.id)}
+                sx={{
+                  color: activeSection === item.id ? "#E6C200" : "#F5F5F5",
+                  fontWeight: "bold",
+                  transition: "color 0.3s ease",
+                  "&:hover": { color: "#D4AF37" },
+                  cursor: "pointer",
+                  borderBottom: activeSection === item.id ? "2px solid #E6C200" : "none",
+                }}
+              >
+                {item.label}
+              </Typography>
+            ))}
             <Box>
               <Typography
                 sx={{
@@ -135,9 +135,9 @@ export default function Navbar() {
                   },
                 }}
               >
-                {moreItems.map((item, index) => (
+                {moreItems.map((item) => (
                   <MenuItem
-                    key={index}
+                    key={item.id}
                     onClick={(e) => handleScroll(e, item.id)}
                     sx={{
                       fontWeight: "bold",
@@ -152,34 +152,53 @@ export default function Navbar() {
             </Box>
           </Box>
 
-          <IconButton edge="end" color="inherit" aria-label="menu" onClick={handleDrawerToggle} sx={{ display: { md: "none" } }}>
+          <IconButton
+            edge="end"
+            color="inherit"
+            aria-label="menu"
+            onClick={handleDrawerToggle}
+            sx={{ display: { md: "none" } }}
+          >
             <MenuIcon />
           </IconButton>
         </Toolbar>
       </AppBar>
 
       <Drawer
-  anchor="right"
-  open={mobileOpen}
-  onClose={handleDrawerToggle}
-  sx={{
-    "& .MuiDrawer-paper": {
-      bgcolor: "rgba(44, 44, 44, 0.9)", 
-      backdropFilter: "blur(10px)",
-      color: "#E6C200", 
-    },
-  }}
->
+        anchor="right"
+        open={mobileOpen}
+        onClose={handleDrawerToggle}
+        sx={{
+          "& .MuiDrawer-paper": {
+            bgcolor: "rgba(44, 44, 44, 0.9)",
+            backdropFilter: "blur(10px)",
+            color: "#E6C200",
+          },
+        }}
+      >
         <List sx={{ width: 200 }}>
           {[...navItems, { label: "More", id: "more", subItems: moreItems }].map((item, index) => (
             <div key={index}>
-              <ListItem onClick={(e) => handleScroll(e, item.id)} sx={{ cursor: "pointer" }}>
-                <ListItemText primary={item.label} sx={{ color: activeSection === item.id ? "#FFD700" : "#FFF" }} />
+              <ListItem
+                onClick={(e) => handleScroll(e, item.id)}
+                sx={{ cursor: "pointer" }}
+              >
+                <ListItemText
+                  primary={item.label}
+                  sx={{ color: activeSection === item.id ? "#FFD700" : "#FFF" }}
+                />
               </ListItem>
               {"subItems" in item &&
-                item.subItems.map((sub, subIndex) => (
-                  <ListItem key={`sub-${subIndex}`} onClick={(e) => handleScroll(e, sub.id)} sx={{ pl: 4, cursor: "pointer" }}>
-                    <ListItemText primary={sub.label} sx={{ color: activeSection === sub.id ? "#FFD700" : "#FFF" }} />
+                item.subItems.map((sub) => (
+                  <ListItem
+                    key={sub.id}
+                    onClick={(e) => handleScroll(e, sub.id)}
+                    sx={{ pl: 4, cursor: "pointer" }}
+                  >
+                    <ListItemText
+                      primary={sub.label}
+                      sx={{ color: activeSection === sub.id ? "#FFD700" : "#FFF" }}
+                    />
                   </ListItem>
                 ))}
             </div>
