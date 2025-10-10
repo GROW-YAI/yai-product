@@ -18,7 +18,7 @@ export default function Footer() {
     { label: "Facebook", href: "https://www.facebook.com/stylesbymakg", icon: <Facebook /> },
     { label: "Instagram", href: "https://www.instagram.com/stylesbymakg/", icon: <Instagram /> },
     { label: "X (Twitter)", href: "https://x.com/stylesbymakg", icon: <Twitter /> },
-    { label: "WhatsApp", href: "https://wa.me/233XXXXXXXXX", icon: <WhatsApp /> },
+    { label: "WhatsApp", href: "https://wa.me/233553489746", icon: <WhatsApp /> },
   ];
 
   const quickLinks = [
