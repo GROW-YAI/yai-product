@@ -9,7 +9,6 @@ import ProductGallery from "./components/ProductGallary";
 import Footer from "./components/Footer";
 import Testimonials from "./components/Testimonals";
 import { speakText } from "./utilis/textToSpeech";
-import { Mic, MicOff } from "@mui/icons-material";
 import OurSolution from "./components/OurSolution";
 
 const images = [
