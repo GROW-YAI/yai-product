@@ -8,7 +8,6 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import { speakText } from "../utilis/textToSpeech";
 import { useState } from "react";
 
 const ContactForm = () => {
@@ -150,7 +149,6 @@ const ContactForm = () => {
               fontWeight: "bold",
               "&:hover": { bgcolor: "#66001A" },
             }}
-            onMouseEnter={() => speakText("Submit button")}
           >
             {formSubmitted ? "Sent!" : "Submit"}
           </Button>

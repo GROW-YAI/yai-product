@@ -1,5 +1,4 @@
 "use client";
-import { useState, useEffect } from "react";
 import { Box } from "@mui/material";
 import Navbar from "./components/NavBar";
 import HeroSection from "./components/HeroCom";
@@ -8,7 +7,6 @@ import ContactForm from "./components/ContactForm";
 import ProductGallery from "./components/ProductGallary";
 import Footer from "./components/Footer";
 import Testimonials from "./components/Testimonals";
-import { speakText } from "./utilis/textToSpeech";
 import OurSolution from "./components/OurSolution";
 
 const images = [
@@ -21,35 +19,6 @@ const images = [
 ];
 
 export default function Home() {
-  const [ttsEnabled, setTtsEnabled] = useState(true);
-
-  useEffect(() => {
-    const savedTtsSetting = localStorage.getItem("ttsEnabled");
-    if (savedTtsSetting !== null) {
-      setTtsEnabled(savedTtsSetting === "true");
-    }
-
-    if (ttsEnabled) {
-      speakText("Welcome to Styles By MakG. Elevate your style, define your sphere.");
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (!ttsEnabled) return;
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            speakText(entry.target.getAttribute("data-tts") || "");
-          }
-        });
-      },
-      { threshold: 0.6 }
-    );
-
-    document.querySelectorAll("[data-tts]").forEach((section) => observer.observe(section));
-
-    return () => observer.disconnect();
-  }, [ttsEnabled]);
-
   return (
     <>
       <Box id="home-section" sx={{ position: "relative", height: "100vh", overflow: "hidden" }}>
@@ -73,7 +42,7 @@ export default function Home() {
         />
       </Box>
 
-      <Box id="about-clients-section" data-tts="About Innovator section">
+      <Box id="about-clients-section">
         <AboutInfo
           title="About Innovator"
           description="Margaret’s Personalized Virtual Fashion Boutique is a revolutionary online platform that makes customized fashion accessible and eco-friendly. Clients can design their outfits using an intuitive virtual interface, ensuring their unique style and preferences are met. The boutique incorporates a 3D body measurement app to provide precise sizing, eliminating common fit issues. Customers can choose from a range of eco-friendly fabrics, supporting sustainable fashion."
@@ -83,7 +52,7 @@ export default function Home() {
         />
       </Box>
 
-      <Box id="about-products-section" data-tts="About Our Products section">
+      <Box id="about-products-section">
         <AboutInfo
           title="About Our Products"
           description="Styles By MakG offers affordable and flexible pricing packages, ensuring inclusivity for different budgets. Clients also enjoy convenient home and office delivery, along with mobile styling consultations, making the entire fashion experience seamless, from design to doorstep."
@@ -93,19 +62,19 @@ export default function Home() {
         />
       </Box>
 
-      <Box id="OurSolution-section" data-tts="Our-solution section">
+      <Box id="OurSolution-section">
         <OurSolution />
       </Box>
 
-      <Box id="product-section" data-tts="Product Gallery section">
+      <Box id="product-section">
         <ProductGallery images={images} />
       </Box>
 
-      <Box id="contact-section" data-tts="Contact Form section">
+      <Box id="contact-section">
         <ContactForm />
       </Box>
 
-      <Box id="testimonial-section" data-tts="Testimonials section">
+      <Box id="testimonial-section">
         <Testimonials />
       </Box>
 
