@@ -13,25 +13,31 @@ interface AboutInfoProps {
   bgColor: string;
 }
 
-const AboutInfo = ({ imageSrc, title, description, reverse, bgColor }: AboutInfoProps) => {
+const AboutInfo = ({
+  imageSrc,
+  title,
+  description,
+  reverse,
+  bgColor,
+}: AboutInfoProps) => {
   const [isVisible, setIsVisible] = useState(false);
   // const [dotPosition, setDotPosition] = useState(0);
   const sectionRef = useRef(null);
 
   useEffect(() => {
-    const currentSection = sectionRef.current; 
-  
+    const currentSection = sectionRef.current;
+
     if (!currentSection) return;
-  
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         setIsVisible(entry.isIntersecting);
       },
       { threshold: 0.3 }
     );
-  
+
     observer.observe(currentSection);
-  
+
     return () => {
       if (currentSection) {
         observer.unobserve(currentSection);
@@ -45,23 +51,21 @@ const AboutInfo = ({ imageSrc, title, description, reverse, bgColor }: AboutInfo
       ref={sectionRef}
       sx={{ width: "100%", py: 10, overflow: "hidden", position: "relative" }}
     >
-   <Box
-  sx={{
-    position: "absolute",
-    top: 0,
-    bottom: 0,
-    width: "30%",
-    backgroundColor: bgColor, 
-    zIndex: 1,
-    left: reverse ? "auto" : 0,
-    right: reverse ? 0 : "auto",
-    "@media (max-width: 768px)": {
-      opacity: 0.5, 
-    },
-  }}
-/>
-
-
+      <Box
+        sx={{
+          position: "absolute",
+          top: 0,
+          bottom: 0,
+          width: "30%",
+          backgroundColor: bgColor,
+          zIndex: 1,
+          left: reverse ? "auto" : 0,
+          right: reverse ? 0 : "auto",
+          "@media (max-width: 768px)": {
+            opacity: 0.5,
+          },
+        }}
+      />
 
       <Grid
         container
@@ -70,7 +74,14 @@ const AboutInfo = ({ imageSrc, title, description, reverse, bgColor }: AboutInfo
         spacing={4}
         sx={{ flexDirection: reverse ? "row-reverse" : "row" }}
       >
-        <Grid size={{ xs: 12, md: 6 }} sx={{ position: "relative", display: "flex", justifyContent: "center" }}>
+        <Grid
+          size={{ xs: 12, md: 6 }}
+          sx={{
+            position: "relative",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
           <Box
             sx={{
               position: "relative",
@@ -84,11 +95,19 @@ const AboutInfo = ({ imageSrc, title, description, reverse, bgColor }: AboutInfo
           >
             <motion.div
               initial={{ opacity: 0, x: reverse ? 100 : -100 }}
-              animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : reverse ? 100 : -100 }}
+              animate={{
+                opacity: isVisible ? 1 : 0,
+                x: isVisible ? 0 : reverse ? 100 : -100,
+              }}
               transition={{ duration: 0.8, ease: "easeOut" }}
               style={{ width: "100%", height: "100%", position: "relative" }}
             >
-              <Image src={imageSrc} alt={title} layout="fill" objectFit="cover" />
+              <Image
+                src={imageSrc}
+                alt={title}
+                layout="fill"
+                objectFit="cover"
+              />
             </motion.div>
           </Box>
         </Grid>
@@ -96,36 +115,55 @@ const AboutInfo = ({ imageSrc, title, description, reverse, bgColor }: AboutInfo
         <Grid size={{ xs: 12, md: 6 }} sx={{ zIndex: 3 }}>
           <motion.div
             initial={{ opacity: 0, x: reverse ? -100 : 100 }}
-            animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : reverse ? -100 : 100 }}
+            animate={{
+              opacity: isVisible ? 1 : 0,
+              x: isVisible ? 0 : reverse ? -100 : 100,
+            }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
           >
-           <Box sx={{ px: 4 }}>
-  <Box className="relative inline-block">
-    <Typography variant="h4" sx={{ fontWeight: "bold", color: "#2D2D2D", position: "relative", pb: 1 }}>
-      {title}
-    </Typography>
+            <Box sx={{ px: 4 }}>
+              <Box className="relative inline-block">
+                <Typography
+                  variant="h4"
+                  sx={{
+                    fontWeight: "bold",
+                    color: "#2D2D2D",
+                    position: "relative",
+                    pb: 1,
+                  }}
+                >
+                  {title}
+                </Typography>
 
-   
-    <Box sx={{ position: "relative", width: "100%", height: 4, backgroundColor: "black", mt: 1 }}>
-    
-      <motion.div
-        style={{
-          width: "12px",
-          height: "12px",
-          borderRadius: "50%",
-          backgroundColor: "gold",
-          position: "absolute",
-          top: "-4px",
-          left: "0%",
-          transform: "translateX(-50%)",
-        }}
-        animate={{ left: ["0%", "100%", "0%"] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-      />
-    </Box>
-  </Box>
-
-
+                <Box
+                  sx={{
+                    position: "relative",
+                    width: "100%",
+                    height: 4,
+                    backgroundColor: "black",
+                    mt: 1,
+                  }}
+                >
+                  <motion.div
+                    style={{
+                      width: "12px",
+                      height: "12px",
+                      borderRadius: "50%",
+                      backgroundColor: "gold",
+                      position: "absolute",
+                      top: "-4px",
+                      left: "0%",
+                      transform: "translateX(-50%)",
+                    }}
+                    animate={{ left: ["0%", "100%", "0%"] }}
+                    transition={{
+                      duration: 10,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  />
+                </Box>
+              </Box>
 
               <Typography variant="body1" sx={{ mt: 2, color: "#222" }}>
                 {description}
@@ -133,7 +171,11 @@ const AboutInfo = ({ imageSrc, title, description, reverse, bgColor }: AboutInfo
 
               {!reverse && (
                 <Grid container spacing={3} sx={{ mt: 4 }}>
-                  {[{ label: "Years of Experience", value: 5 }, { label: "Projects Completed", value: 100 }, { label: "Happy Clients", value: 50 }].map((stat, index) => (
+                  {[
+                    { label: "Years of Experience", value: 5 },
+                    { label: "Projects Completed", value: 100 },
+                    { label: "Happy Clients", value: 50 },
+                  ].map((stat, index) => (
                     <Grid key={index} size={{ xs: 12, sm: 4 }}>
                       <Card
                         sx={{
@@ -146,10 +188,19 @@ const AboutInfo = ({ imageSrc, title, description, reverse, bgColor }: AboutInfo
                       >
                         <motion.div
                           initial={{ opacity: 0, y: 30 }}
-                          animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 30 }}
-                          transition={{ duration: 0.8, delay: 0.3 + index * 0.2 }}
+                          animate={{
+                            opacity: isVisible ? 1 : 0,
+                            y: isVisible ? 0 : 30,
+                          }}
+                          transition={{
+                            duration: 0.8,
+                            delay: 0.3 + index * 0.2,
+                          }}
                         >
-                          <Typography variant="h3" sx={{ fontWeight: "bold", color: "gold" }}>
+                          <Typography
+                            variant="h3"
+                            sx={{ fontWeight: "bold", color: "gold" }}
+                          >
                             {stat.value}+
                           </Typography>
                           <Typography variant="body2" sx={{ color: "gold" }}>

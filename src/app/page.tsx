@@ -47,7 +47,7 @@ export default function Home() {
           title="About Innovator"
           description="Margaret’s Personalized Virtual Fashion Boutique is a revolutionary online platform that makes customized fashion accessible and eco-friendly. Clients can design their outfits using an intuitive virtual interface, ensuring their unique style and preferences are met. The boutique incorporates a 3D body measurement app to provide precise sizing, eliminating common fit issues. Customers can choose from a range of eco-friendly fabrics, supporting sustainable fashion."
           bgColor="#202120"
-          imageSrc="/inovator.png"
+          imageSrc="/inovator.jpg"
           reverse={false}
         />
       </Box>
